@@ -1,5 +1,6 @@
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import DarkThemeSwitch from "./DarkThemeSwitch";
+import UserWeather from "./UserWeather";
 type PropTypes = {
 	handleDarkMode: (isDark: boolean) => void;
 };
@@ -16,6 +17,9 @@ const Navbar = (props: PropTypes) => {
 					<DarkThemeSwitch
 						onChange={(e) => props.handleDarkMode(e.target.checked)}
 					/>
+				</Box>
+				<Box>
+					<UserWeather />
 				</Box>
 			</Toolbar>
 		</AppBar>
