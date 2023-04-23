@@ -12,7 +12,7 @@ import {
 
 type PropTypes = {
 	handleSubmit: (values: {}) => void;
-	initialValue?: Todo;
+	initialValue?: Todo | null;
 };
 const TodoForm = (props: PropTypes) => {
 	const [title, setTitle] = useState(props.initialValue?.title || "");

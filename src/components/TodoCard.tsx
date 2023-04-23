@@ -11,6 +11,11 @@ import { Archive, Delete, Edit } from "@mui/icons-material";
 
 type PropTypes = {
 	item: Todo;
+	viewTodo: () => void;
+	editTodo: () => void;
+	checkTodo: (checked: boolean) => void;
+	deleteTodo: () => void;
+	archiveTodo: () => void;
 };
 
 const TodoCard = (props: PropTypes) => {
@@ -25,18 +30,24 @@ const TodoCard = (props: PropTypes) => {
 				>
 					<Checkbox
 						checked={props.item.checked}
-						// onChange={handleChange}
+						onChange={(e) => props.checkTodo(e.target.checked)}
 						inputProps={{ "aria-label": "controlled" }}
 					/>
-					<Typography variant="h6">{props.item.title}</Typography>
+					<Typography
+						variant="h6"
+						sx={{ cursor: "pointer" }}
+						onClick={props.viewTodo}
+					>
+						{props.item.title}
+					</Typography>
 					<Box display="flex">
-						<IconButton>
+						<IconButton onClick={props.editTodo}>
 							<Edit />
 						</IconButton>
-						<IconButton>
+						<IconButton onClick={props.deleteTodo}>
 							<Delete />
 						</IconButton>
-						<IconButton>
+						<IconButton onClick={props.archiveTodo}>
 							<Archive />
 						</IconButton>
 					</Box>

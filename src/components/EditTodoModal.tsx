@@ -6,31 +6,33 @@ import moment from "moment";
 type PropTypes = {
 	open: boolean;
 	handleClose: () => void;
-	addTodo: (todo: Todo) => void;
+	editTodo: (todo: Todo) => void;
+	item: Todo | null;
 };
 
-const AddTodoModal = (props: PropTypes) => {
+const EditTodoModal = (props: PropTypes) => {
 	const submitHandler = (values: any) => {
 		const todo: Todo = {
 			title: values.title,
 			description: values.description,
-			checked: false,
-			createdAt: moment().format("dddd, MMMM D, YYYY h:mm A"),
-			archivedAt: null,
-			finishedAt: null,
+			checked: props?.item?.checked || false,
+			createdAt: props?.item?.createdAt || "",
+			archivedAt: props?.item?.archivedAt || null,
+			finishedAt: props?.item?.finishedAt || null,
 		};
 
-		props.addTodo(todo);
+		props.editTodo(todo);
+		console.log("edit", todo);
 		props.handleClose();
 	};
 	return (
 		<Dialog onClose={props.handleClose} open={props.open} sx={{ p: 10 }}>
-			<DialogTitle>Add a new todo</DialogTitle>
+			<DialogTitle>Edit todo</DialogTitle>
 			<DialogContent>
-				<TodoForm handleSubmit={submitHandler} />
+				<TodoForm handleSubmit={submitHandler} initialValue={props?.item} />
 			</DialogContent>
 		</Dialog>
 	);
 };
 
-export default AddTodoModal;
+export default EditTodoModal;
