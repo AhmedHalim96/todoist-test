@@ -8,7 +8,13 @@ import {
 	colors,
 } from "@mui/material";
 import { Todo } from "../types/myTypes";
-import { Archive, Delete, Edit, RemoveRedEye } from "@mui/icons-material";
+import {
+	Archive,
+	Delete,
+	Edit,
+	RemoveRedEye,
+	Unarchive,
+} from "@mui/icons-material";
 
 type PropTypes = {
 	item: Todo;
@@ -21,7 +27,7 @@ type PropTypes = {
 
 const TodoCard = (props: PropTypes) => {
 	return (
-		<Card variant="outlined" sx={{ maxWidth: 500 }}>
+		<Card variant="outlined" sx={{ maxWidth: 500, width: "100%" }}>
 			<CardContent>
 				<Box
 					display="flex"
@@ -58,8 +64,11 @@ const TodoCard = (props: PropTypes) => {
 						<IconButton onClick={props.deleteTodo} title="delete">
 							<Delete />
 						</IconButton>
-						<IconButton onClick={props.archiveTodo} title="archive">
-							<Archive />
+						<IconButton
+							onClick={props.archiveTodo}
+							title={props.item.archivedAt ? "unarchive" : "archive"}
+						>
+							{props.item.archivedAt ? <Unarchive /> : <Archive />}
 						</IconButton>
 					</Box>
 				</Box>

@@ -20,7 +20,9 @@ const ViewTodoModal = (props: PropTypes) => {
 			<DialogTitle>{props.item?.title}</DialogTitle>
 			<DialogContent>
 				<Stack gap={1}>
-					<Typography variant="body2">{props?.item?.description}</Typography>
+					<Typography variant="body2" component={"pre"}>
+						{props?.item?.description}
+					</Typography>
 					<Typography variant="caption">
 						Created at: {props?.item?.createdAt}
 					</Typography>
