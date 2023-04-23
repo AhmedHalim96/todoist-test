@@ -19,25 +19,23 @@ const ViewTodoModal = (props: PropTypes) => {
 		<Dialog onClose={props.handleClose} open={props.open} sx={{ p: 10 }}>
 			<DialogTitle>{props.item?.title}</DialogTitle>
 			<DialogContent>
-				<Box minWidth={"300px"}>
-					<Stack gap={1}>
-						<Typography variant="body2">{props?.item?.description}</Typography>
+				<Stack gap={1}>
+					<Typography variant="body2">{props?.item?.description}</Typography>
+					<Typography variant="caption">
+						Created at: {props?.item?.createdAt}
+					</Typography>
+					{props?.item?.checked && (
 						<Typography variant="caption">
-							Created at: {props?.item?.createdAt}
+							Finished at: {props.item.finishedAt}
 						</Typography>
-						{props?.item?.checked && (
-							<Typography variant="caption">
-								Finished at: {props.item.finishedAt}
-							</Typography>
-						)}
+					)}
 
-						{props?.item?.archivedAt && (
-							<Typography variant="caption">
-								archivedAt at: {props.item.archivedAt}
-							</Typography>
-						)}
-					</Stack>
-				</Box>
+					{props?.item?.archivedAt && (
+						<Typography variant="caption">
+							archivedAt at: {props.item.archivedAt}
+						</Typography>
+					)}
+				</Stack>
 			</DialogContent>
 		</Dialog>
 	);
