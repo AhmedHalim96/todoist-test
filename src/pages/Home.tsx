@@ -1,7 +1,7 @@
 import { Box, Button, Stack } from "@mui/material";
 import { Todo } from "../types/myTypes";
 import TodoCard from "../components/TodoCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTodoModal from "../components/AddToddModal";
 import { Add } from "@mui/icons-material";
 
@@ -10,10 +10,19 @@ const Home = () => {
 
 	const [addTodoShow, setAddTodoShow] = useState(false);
 
-	const addTodoHandler = (todo: Todo) => {
-		setTodos([...todos, todo]);
+	const addTodoHandler = (newTodo: Todo) => {
+		setTodos([...todos, newTodo]);
 		// addToLocal Storage
+		localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
 	};
+
+	useEffect(() => {
+		const storedTodos = localStorage.getItem("todos");
+		if (storedTodos) {
+			const parsedTodos = JSON.parse(storedTodos) as Todo[];
+			setTodos(parsedTodos);
+		}
+	}, []);
 
 	return (
 		<Box>
