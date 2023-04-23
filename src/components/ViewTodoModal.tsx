@@ -16,7 +16,12 @@ type PropTypes = {
 
 const ViewTodoModal = (props: PropTypes) => {
 	return (
-		<Dialog onClose={props.handleClose} open={props.open} sx={{ p: 10 }}>
+		<Dialog
+			onClose={props.handleClose}
+			open={props.open}
+			fullWidth
+			maxWidth="sm"
+		>
 			<DialogTitle>{props.item?.title}</DialogTitle>
 			<DialogContent>
 				<Stack gap={1}>

@@ -24,7 +24,12 @@ const AddTodoModal = (props: PropTypes) => {
 		props.handleClose();
 	};
 	return (
-		<Dialog onClose={props.handleClose} open={props.open} sx={{ p: 10 }}>
+		<Dialog
+			onClose={props.handleClose}
+			open={props.open}
+			fullWidth
+			maxWidth="sm"
+		>
 			<DialogTitle>Add a new todo</DialogTitle>
 			<DialogContent>
 				<TodoForm handleSubmit={submitHandler} />

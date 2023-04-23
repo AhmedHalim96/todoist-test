@@ -7,6 +7,7 @@ import {
 	Input,
 	InputLabel,
 	Stack,
+	TextField,
 	TextareaAutosize,
 } from "@mui/material";
 
@@ -33,26 +34,24 @@ const TodoForm = (props: PropTypes) => {
 					});
 				}}
 			>
-				<FormControl>
-					<Input
-						value={title}
-						onChange={(e) => setTitle(e.target.value)}
-						id="title"
-						aria-describedby="Todo title"
-						required
-						placeholder="Title"
-					/>
-				</FormControl>
-				<FormControl>
-					<TextareaAutosize
-						value={description}
-						onChange={(e) => setDescription(e.target.value)}
-						id="description"
-						aria-describedby="Todo descrioption"
-						placeholder="Description"
-						minRows={6}
-					/>
-				</FormControl>
+				<TextField
+					label="Title"
+					name="title"
+					value={title}
+					onChange={(e) => setTitle(e.target.value)}
+					margin="normal"
+					variant="outlined"
+					fullWidth
+				/>
+				<TextareaAutosize
+					value={description}
+					onChange={(e) => setDescription(e.target.value)}
+					id="description"
+					aria-describedby="Todo descrioption"
+					placeholder="Description"
+					minRows={6}
+					style={{ width: "100%", marginTop: 10, padding: ".5rem" }}
+				/>
 
 				<Button variant="contained" type="submit">
 					Submit

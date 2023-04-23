@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useUserLocation from "../hooks/useUserLocation";
 
 // should be in an env file or something not here
-const apiKey = "5f6664b9298dd70296547139b43a3f07";
+const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 const UserWeather = () => {

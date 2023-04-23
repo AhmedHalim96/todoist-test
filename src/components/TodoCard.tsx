@@ -27,7 +27,7 @@ type PropTypes = {
 
 const TodoCard = (props: PropTypes) => {
 	return (
-		<Card variant="outlined" sx={{ maxWidth: 500, width: "100%" }}>
+		<Card variant="outlined" sx={{ maxWidth: 900, width: "100%", mx: "auto" }}>
 			<CardContent>
 				<Box
 					display="flex"

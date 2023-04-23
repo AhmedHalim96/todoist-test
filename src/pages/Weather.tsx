@@ -6,7 +6,7 @@ import { filterWeatherData, formatweatherDate } from "../utils/helpers";
 import { useMemo } from "react";
 import moment from "moment";
 
-const API_KEY = "5f6664b9298dd70296547139b43a3f07";
+const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const BASE_URL = `https://api.openweathermap.org/data/2.5/forecast`;
 
 const Weather = () => {
