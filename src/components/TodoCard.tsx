@@ -5,9 +5,10 @@ import {
 	Checkbox,
 	IconButton,
 	Typography,
+	colors,
 } from "@mui/material";
 import { Todo } from "../types/myTypes";
-import { Archive, Delete, Edit } from "@mui/icons-material";
+import { Archive, Delete, Edit, RemoveRedEye } from "@mui/icons-material";
 
 type PropTypes = {
 	item: Todo;
@@ -20,7 +21,7 @@ type PropTypes = {
 
 const TodoCard = (props: PropTypes) => {
 	return (
-		<Card variant="outlined">
+		<Card variant="outlined" sx={{ maxWidth: 500 }}>
 			<CardContent>
 				<Box
 					display="flex"
@@ -28,26 +29,36 @@ const TodoCard = (props: PropTypes) => {
 					justifyContent="space-between"
 					flexWrap={"wrap"}
 				>
-					<Checkbox
-						checked={props.item.checked}
-						onChange={(e) => props.checkTodo(e.target.checked)}
-						inputProps={{ "aria-label": "controlled" }}
-					/>
-					<Typography
-						variant="h6"
-						sx={{ cursor: "pointer" }}
-						onClick={props.viewTodo}
-					>
-						{props.item.title}
-					</Typography>
+					<Box display="flex" alignItems="center" gap={1}>
+						<Checkbox
+							checked={props.item.checked}
+							onChange={(e) => props.checkTodo(e.target.checked)}
+							inputProps={{ "aria-label": "controlled" }}
+						/>
+						<Typography
+							variant="h6"
+							sx={{
+								cursor: "pointer",
+								textDecoration: props.item.checked ? "line-through" : "",
+								color: props.item.checked ? colors.grey[400] : "",
+							}}
+							onClick={props.viewTodo}
+						>
+							{props.item.title}
+						</Typography>
+					</Box>
+
 					<Box display="flex">
-						<IconButton onClick={props.editTodo}>
+						<IconButton title="View" onClick={props.viewTodo}>
+							<RemoveRedEye />
+						</IconButton>
+						<IconButton onClick={props.editTodo} title="edit">
 							<Edit />
 						</IconButton>
-						<IconButton onClick={props.deleteTodo}>
+						<IconButton onClick={props.deleteTodo} title="delete">
 							<Delete />
 						</IconButton>
-						<IconButton onClick={props.archiveTodo}>
+						<IconButton onClick={props.archiveTodo} title="archive">
 							<Archive />
 						</IconButton>
 					</Box>
