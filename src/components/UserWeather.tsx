@@ -22,8 +22,8 @@ const UserWeather = () => {
 		["currentWeather"],
 		fetchWeather,
 		{
-			onSuccess: (data) => console.log(data),
 			enabled: lat && lon ? true : false,
+			refetchOnWindowFocus: false,
 		}
 	);
 
